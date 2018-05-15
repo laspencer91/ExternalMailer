@@ -4,8 +4,8 @@ const configuration = require('../config/stage-config.json');
 var transporter = nodemailer.createTransport( {
     service: 'gmail',
     auth: {
-        user: configuration.mailAuth.user,
-        pass: configuration.mailAuth.pass
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
