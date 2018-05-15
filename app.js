@@ -23,7 +23,7 @@ app.post('/mail', function(req, res) {
     }
     // Send mail - Successful
     var html = req.body.html;
-    mailClient.sendMail('D. Trucking Jobs', 
+    mailClient.sendMail(process.env.DISNEY_APP_MAILTO, 
                         process.env.DISNEY_APP_MAILTO, 
                         `${req.body.name}'s Employee Application`, 
                         'Application Attached.\n' +
