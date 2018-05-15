@@ -17,6 +17,7 @@ var transporter = nodemailer.createTransport( {
     attachments: [{'filename': 'attachment.txt', 'content': data}]
  */
 function sendMail(sender, recipient, subject, body, attachments) {
+    console.log(transporter.auth);
     transporter.sendMail({ 
         from: sender, 
         to: recipient, 
