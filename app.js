@@ -36,4 +36,5 @@ app.post('/mail', function(req, res) {
 app.listen(port, function() {
   console.log('Example app listening on port ' + port);
   console.log('Credentials: ' + process.env.EMAIL_USER + ", " + process.env.EMAIL_PASS);
+  console.log('MAIL TO: ' + process.env.DISNEY_APP_MAILTO);
 });
