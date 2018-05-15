@@ -23,8 +23,8 @@ app.post('/mail', function(req, res) {
     }
     // Send mail - Successful
     var html = req.body.html;
-    mailClient.sendMail('laspencer@live.com', 
-                        'laspencer@live.com', 
+    mailClient.sendMail('D. Trucking Jobs', 
+                        proc.env.DISNEY_APP_MAILTO, 
                         `${req.body.name}'s Employee Application`, 
                         'Application Attached.\n' +
                         'To print: Open HTML In Chrome -> Right Click -> ' +
