@@ -11,12 +11,12 @@ app.post('/mail', function(req, res) {
     // Verify contents
     if (req.body.html == undefined) {
         console.log("Body not recognized. Ending execution. No email Sent");
-        res.send("Email Not Sent, problem recognizing request body.");
+        res.sendStatus(500, "Email contents were not recognized by the recieving server. Please try again.");
         return;
     }
     if (req.body.name == undefined) {
         console.log("Name was not specified. Email Not Sending");
-        res.send("Email Not Sent, problem recognizing request body. The applicants name was not specified");
+        res.sendStatus(500, "Name was not correctly specified in email output. Email could not be sent. Please try again.");
         return;
     }
     // Send mail - Successful
@@ -26,9 +26,9 @@ app.post('/mail', function(req, res) {
                         `${req.body.name}'s Employee Application`, 
                         'Application Attached.\n' +
                         'To print: Open HTML In Chrome -> Right Click -> ' +
-                        'Print -> Change Destination to Save As PDF -> Print', [{filename: 'Application.html', content: html}]);
-    res.send('Email Sent!!');
-    console.log("Application Sent Successfully")
+                        'Print -> Change Destination to Save As PDF -> Print', [{filename: req.body.name+'_application.html', content: html}]);
+    console.log("Application Sent Successfully");
+    res.sendStatus(200);
 });
 
 app.listen(3000, function() {
